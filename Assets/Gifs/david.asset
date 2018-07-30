@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf2940b61249bb4ba8824261d8b5534, type: 3}
+  m_Name: david
+  m_EditorClassIdentifier: 
+  endurance: 1.36
+  delay: 0.17
+  frames:
+  - {fileID: 2800000, guid: c8f40742ac8d2bc4da182b722f08715e, type: 3}
+  - {fileID: 2800000, guid: 1e89cde39fd10d54f9afa999b19f37db, type: 3}
+  - {fileID: 2800000, guid: eaf2686c834d5ac4998ccc3ea7c8a573, type: 3}
+  - {fileID: 2800000, guid: dbf23d56d4260c845be2544282a15e0a, type: 3}
+  - {fileID: 2800000, guid: ae0396e950ff9ef498c279f6f0042275, type: 3}
+  - {fileID: 2800000, guid: fbaf4de07b743d3428e5a7bf53ca0dd3, type: 3}
+  - {fileID: 2800000, guid: 938b7c83f5dac5a4da45c234bdff5880, type: 3}
+  - {fileID: 2800000, guid: 0b8df7ac308cba347bf34640532d7b72, type: 3}
