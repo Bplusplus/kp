@@ -63,6 +63,9 @@ public class RoundManager : MonoBehaviour
             StartCoroutine(pauseGame());
 
         }
+        if (Input.GetKeyDown(KeyCode.Y)) {
+            NewGame();
+        }
     }
 
 
@@ -73,11 +76,7 @@ public class RoundManager : MonoBehaviour
            // winScreen.text = "Congrats " + winningPlayerName + "! You won with " + winningPlayer + " points! /n Don't Worry " + losingPlayer + " you'll get them next time!";
         winUi.sprite = winner[winningPlayer];
         gameOverPause = true;
-        sc.ResetScore();
-
-        tm.StartTimer();
-
-        bm.Spawn();
+       
         winScreen.text = "";
 
     }
@@ -85,15 +84,18 @@ public class RoundManager : MonoBehaviour
     public IEnumerator pauseForNewPlayers() {
         Time.timeScale = 0.0001f;
         yield return StartCoroutine(waitForInput(KeyCode.Space));
+
         Time.timeScale = 1;
+      
 
 
     }
     IEnumerator waitForInput(KeyCode key) {
-        print("test");
+
         while (!Input.GetKeyDown(key)) {
             yield return null;
         }
+      
     }
     public IEnumerator pauseGame() {
 
@@ -102,12 +104,22 @@ public class RoundManager : MonoBehaviour
         toggle = !toggle;
         winUi.enabled = toggle;
         yield return  StartCoroutine(waitForInput(KeyCode.Space));
+        
         toggle = !toggle;
         gameOverPause = false;
         isPaused = false;
         winUi.enabled = toggle;
         bm.pause();
-        tm.pauseTimer();
+        tm.StartTimer();
+        NewGame();
 
+    }
+    void NewGame() {
+      //  StartCoroutine(pauseGame());
+        sc.ResetScore();
+
+        tm.resetTimer();
+
+        bm.Spawn();
     }
 }

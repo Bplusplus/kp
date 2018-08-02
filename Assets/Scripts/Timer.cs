@@ -66,7 +66,7 @@ public class Timer : MonoBehaviour
         if (timerIsRunning)
         {
 
-            if (t <= 0)
+            if (setTime-t <= 0)
 
             {
 
@@ -79,9 +79,9 @@ public class Timer : MonoBehaviour
             else
             {
 
-                t = TimerCount();
+                t += Time.deltaTime;
 
-                displayTime = ConvertSteps2Time(t);
+                displayTime = ConvertSteps2Time(setTime-t);
 
                 text.text = displayTime;
 
@@ -103,8 +103,8 @@ public class Timer : MonoBehaviour
 
             timerIsRunning = true;
 
-            startTime = Time.time;
-
+          //  startTime = Time.time;
+          
             t = 0;
 
             displayTime = "";
@@ -152,6 +152,9 @@ public class Timer : MonoBehaviour
     }
     public void pauseTimer() {
         timerIsRunning = !timerIsRunning;
+        
     }
-
+    public void resetTimer() {
+        t = 0;
+    }
 }

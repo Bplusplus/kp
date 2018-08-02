@@ -3,13 +3,15 @@ using System.Collections.Generic;
 ﻿using System;
 using UnityEngine;
 
-public class BallMovement : MonoBehaviour {
+public class BallMovement1 : MonoBehaviour {
 
     public float speed = 5f;
 	public float tolerance = 0f;
+
     public float predictionRange = 1f;
 
-	public float spawnVariance = 3;
+
+    public float spawnVariance = 3;
     Vector3 dirV3;
     Vector2 dir;
     Rigidbody rb;
@@ -107,8 +109,12 @@ public class BallMovement : MonoBehaviour {
 			iTimer -= Time.deltaTime;
 		}
 	}
+    private void FixedUpdate()
+    {
+        checkAhead();
+    }
 
-	private void LateUpdate()
+    private void LateUpdate()
 	{
         //if(!isPaused)
         {
@@ -126,112 +132,14 @@ public class BallMovement : MonoBehaviour {
 	public void Spawn() {
         myMaterial.color = defaultColor;
         transform.position = Vector3.zero + Vector3.up *UnityEngine.Random.Range(-spawnVariance, spawnVariance) ;
-        int leader =sc.WhoIsLeader();
-        switch (leader)
-        {
-            case 0:
-                dir = player1.position - transform.position;
-                break;
-            case 1:
-                dir = player2.position - transform.position;
-                break;
-            default:
-                dir = UnityEngine.Random.insideUnitCircle;
-                break;
-        }
+      
+        dir = UnityEngine.Random.insideUnitCircle;
+  
        
         dirV3 = new Vector3(dir.x, dir.y);
         rb.velocity = dirV3 * speed;
     }
-
-    
-    private void OnCollisionEnter(Collision col)
-    {
-		if (iTimer <= 0)
-		{
-
-			if (col.gameObject.tag == "Paddle")
-			{
-                myMaterial.color = col.gameObject.GetComponent<Renderer>().material.color;
-
-                Vector3 paddle = col.transform.position;
-				Vector3 angle = paddle - transform.position;
-				float mag = Vector3.Magnitude(angle);
-
-				Vector3 reflection = Vector3.Reflect(rb.velocity, col.contacts[0].normal);
-
-				//rb.velocity = -angle * speed;
-				//speed = (1f / mag) * 5;
-
-				rb.velocity = (-angle + reflection + rb.velocity.magnitude * col.contacts[0].normal * -1f) * speed;
-                float myYpos = transform.position.y;
-
-                float paddleYpos = paddle.y;
-
-                int higherLower = 0;
-
-                if (paddleYpos > (myYpos + .5f))
-
-                {
-
-                    //ball is lower
-
-                    higherLower = 1;
-
-                   // print(higherLower);
-
-                }
-
-                else if (paddleYpos < (myYpos - .05f))
-
-                {
-
-                    //ball is higher
-
-                    higherLower = 2;
-
-                }
-
-               // print("Paddle ypos: " + paddle.y + " Ball ypos : " + myYpos);
-
-                ballHit(higherLower);
-
-            }
-            else if(col.gameObject.tag=="Boundary"){
-                if (rb.velocity.x > 0)
-                {
-                    rb.velocity = rb.velocity.normalized * 0.9f + Vector3.right * 0.1f;
-
-
-                }
-                else if (rb.velocity.x < 0)
-                {
-                    rb.velocity = rb.velocity.normalized * 0.9f + Vector3.left * 0.1f;
-
-                }
-                ballHit(3); 
-            }
-            
-
-			iTimer = interactionTimerL;
-
-			if (RandoRot)
-			{
-				rb.maxAngularVelocity = 45;
-				rb.angularVelocity = UnityEngine.Random.onUnitSphere * UnityEngine.Random.Range(-45, 45);
-			}
-		}
-		else
-		{
-			//Debug.Log("Already Collided " + col.gameObject.name);
-		}
-	}
-    private void FixedUpdate()
-    {
-        checkAhead();
-    }
-    void checkAhead()
-    {
+    void checkAhead() {
         RaycastHit rayHit;
         Vector3 rayOrigin = this.transform.position;
         Vector3 ray = rb.velocity * predictionRange;
@@ -285,8 +193,8 @@ public class BallMovement : MonoBehaviour {
 
                     ballHit(higherLower);
 
-
-                }
+                
+            }
                 else if (rayHit.transform.gameObject.tag == "Boundary")
                 {
                     if (rb.velocity.x > 0)
@@ -313,7 +221,9 @@ public class BallMovement : MonoBehaviour {
             }
         }
 
-    }
+     }
+
+
     public void pause() {
         isPaused = !isPaused;
         
