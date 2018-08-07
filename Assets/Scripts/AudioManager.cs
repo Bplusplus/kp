@@ -35,8 +35,9 @@ public class AudioManager : MonoBehaviour
 
         if (i < bounceSounds.Length && bounceSounds != null)
         {
-
-            player.PlayOneShot(bounceSounds[i]);
+           
+                player.PlayOneShot(bounceSounds[i]);
+           
 
 
 

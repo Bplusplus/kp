@@ -25,7 +25,7 @@ public class DistortController : MonoBehaviour {
         playerDistorts[1].SetVector("_IntensityAndScrolling", new Vector4(0, 0, .2f, 1f));
     }
    public void UpdateDistortion(int leader,int lead) {
-        print("Checked");
+        //print("Checked");
         switch (leader) {
             case 0:
                 playerDistortionIntensity[0] = lead * distortScalar;

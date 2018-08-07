@@ -59,6 +59,8 @@ public class BallMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        checkAhead();
+
         if (transform.position.x > rightBound)
         {
 			try
@@ -144,7 +146,7 @@ public class BallMovement : MonoBehaviour {
         rb.velocity = dirV3 * speed;
     }
 
-    
+    /*
     private void OnCollisionEnter(Collision col)
     {
 		if (iTimer <= 0)
@@ -226,23 +228,27 @@ public class BallMovement : MonoBehaviour {
 			//Debug.Log("Already Collided " + col.gameObject.name);
 		}
 	}
+    */
     private void FixedUpdate()
     {
-        checkAhead();
     }
     void checkAhead()
     {
         RaycastHit rayHit;
         Vector3 rayOrigin = this.transform.position;
-        Vector3 ray = rb.velocity * predictionRange;
+        Vector3 ray = rb.velocity.normalized * predictionRange;
+        Debug.DrawRay(rayOrigin, ray, Color.red,.01f );
         if (Physics.Raycast(rayOrigin, ray, out rayHit, ray.magnitude))
         {
+           
             if (iTimer <= 0)
             {
+                print(rayHit.transform.gameObject.name);
                 if (rayHit.transform.gameObject.tag == "Paddle")
                 {
+                    print("Cheese");
                     myMaterial.color = rayHit.transform.gameObject.GetComponent<Renderer>().material.color;
-
+                    print(rayHit.transform.gameObject.GetComponent<Renderer>().material.color);
                     Vector3 paddle = rayHit.transform.position;
                     Vector3 angle = paddle - transform.position;
                     float mag = Vector3.Magnitude(angle);
