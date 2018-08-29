@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
 
     public BallMovement bm;
 
-    public TextMesh winScreen;
+    //public TextMesh winScreen;
     public GameObject ball;
     bool gameOverPause = false;
     bool isPaused = false;
@@ -39,7 +39,7 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        winScreen.text = "";
+       // winScreen.text = "";
       //  bm = ball.GetComponent<BallMovement>();
 
 
@@ -77,7 +77,7 @@ public class RoundManager : MonoBehaviour
         winUi.sprite = winner[winningPlayer];
         gameOverPause = true;
        
-        winScreen.text = "";
+       // winScreen.text = "";
 
     }
 

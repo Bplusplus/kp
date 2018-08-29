@@ -36,6 +36,8 @@ public class BallMovement : MonoBehaviour {
 
     public static Action<int> score;
 
+    public GameObject zTestObject;
+
 
     public ScoreController sc;
     bool isPaused = false;
@@ -127,7 +129,7 @@ public class BallMovement : MonoBehaviour {
 
 	public void Spawn() {
         myMaterial.color = defaultColor;
-        transform.position = Vector3.zero + Vector3.up *UnityEngine.Random.Range(-spawnVariance, spawnVariance) ;
+        transform.position = new Vector3(0,0,zTestObject.transform.position.z) + Vector3.up *UnityEngine.Random.Range(-spawnVariance, spawnVariance) ;
         int leader =sc.WhoIsLeader();
         switch (leader)
         {
