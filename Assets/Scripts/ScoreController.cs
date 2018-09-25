@@ -18,6 +18,13 @@ public class ScoreController : MonoBehaviour {
 
     public int numOfGifs = 3;
 
+    public bool useAll;
+
+    public GifData[] allGifs;
+
+    public bool useSpace =false;
+
+    public GifData[] spaceGifs;
 
     int[] playerScores;
     public TextMesh[] scoreText;
@@ -38,7 +45,7 @@ public class ScoreController : MonoBehaviour {
     void Awake() {
 
       playerScores = new int[2];
-
+        ResetScore();
     }
 
     // Update is called once per frame
@@ -82,41 +89,49 @@ public class ScoreController : MonoBehaviour {
     void UpdateMesh(int i)
     {
 
+        if (useAll) {
+            int x = Random.Range(0, allGifs.Length);
+            boards[i].ChangeGif(allGifs[x]);
+
+        }
+
         // boards[i].ChangeGif(gifs[playerScores[i] % 3]);
-        int r = Random.Range(0, 3);
-        if (playerScores[i] < 4)
 
-        {
+        else {
+            int r = Random.Range(0, 3);
+            if (playerScores[i] < 4)
+
+            {
 
 
-            boards[i].ChangeGif(easyGifs[r % 3]);
+                boards[i].ChangeGif(easyGifs[r % 3]);
 
 
+
+            }
+
+            else if (playerScores[i] > 6)
+
+            {
+
+                boards[i].ChangeGif(hardGifs[r % 3]);
+
+
+
+            }
+
+            else
+            {
+
+                boards[i].ChangeGif(mediumGifs[r % 3]);
+
+
+
+            }
+
+            // boards[i].ChangeGif(gifs[playerScores[i]%3]);
 
         }
-
-        else if (playerScores[i] > 6)
-
-        {
-
-            boards[i].ChangeGif(hardGifs[r % 3]);
-
-
-
-        }
-
-        else
-        {
-
-            boards[i].ChangeGif(mediumGifs[r % 3]);
-
-
-
-        }
-
-        // boards[i].ChangeGif(gifs[playerScores[i]%3]);
-
-
     }
     public void ResetScore()
 

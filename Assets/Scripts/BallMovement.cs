@@ -38,6 +38,11 @@ public class BallMovement : MonoBehaviour {
 
     public GameObject zTestObject;
 
+    public float sphereRadius;
+    public LayerMask layerMask;
+
+    
+
 
     public ScoreController sc;
     bool isPaused = false;
@@ -52,7 +57,9 @@ public class BallMovement : MonoBehaviour {
         {
             rb = GetComponent<Rigidbody>();
         }
-        storedVelocity = Vector3.zero;
+  
+
+    storedVelocity = Vector3.zero;
         Spawn();
        
       
@@ -238,11 +245,12 @@ public class BallMovement : MonoBehaviour {
     {
         RaycastHit rayHit;
         Vector3 rayOrigin = this.transform.position;
-        Vector3 ray = rb.velocity.normalized * predictionRange;
-        Debug.DrawRay(rayOrigin, ray, Color.red,.01f );
-        if (Physics.Raycast(rayOrigin, ray, out rayHit, ray.magnitude))
+      //  Vector3 ray = rb.velocity.normalized * predictionRange;
+        //Debug.DrawRay(rayOrigin, ray, Color.red,.01f );
+        if (Physics.Raycast(rayOrigin,rb.velocity.normalized, out rayHit, predictionRange, layerMask, QueryTriggerInteraction.Collide))
         {
-           
+                    print("Cheese");
+
             if (iTimer <= 0)
             {
                 print(rayHit.transform.gameObject.name);
@@ -260,7 +268,7 @@ public class BallMovement : MonoBehaviour {
                     //rb.velocity = -angle * speed;
                     //speed = (1f / mag) * 5;
 
-                    rb.velocity = (-angle + reflection + rb.velocity.magnitude * rayHit.normal * -1f) * speed;
+                   // rb.velocity = (-angle + reflection + rb.velocity.magnitude * rayHit.normal * -1f) * speed;
                     float myYpos = transform.position.y;
 
                     float paddleYpos = paddle.y;
