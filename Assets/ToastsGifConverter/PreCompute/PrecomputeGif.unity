@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &678376372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,9 +216,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runtimeConverter: {fileID: 1325291957126652, guid: 65737be6685e496478e866040b83a831,
     type: 2}
-  sourcePath: Assets/SourceGifs/vaporwave.gif
-  savePath: Assets/Gifs
-  saveName: vaporwave
+  sourcePath: Assets/Gifs/fallingStars.gif
+  savePath: Assets/Gifs/GameGifs
+  saveName: fallingStars
   gifPlayer: {fileID: 1373277030}
   hasAlpha: 0
   quality: 80
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 0
-  gif: {fileID: 11400000, guid: 8a89baa0ee921854d8dca27dd816d2db, type: 2}
+  _g: {fileID: 0}
 --- !u!23 &1373277031
 MeshRenderer:
   m_ObjectHideFlags: 0
