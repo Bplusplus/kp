@@ -1087,7 +1087,7 @@ ParticleSystemRenderer:
   m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 44035568ed68eb04ca601bfea6714944, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -16434,7 +16434,7 @@ MonoBehaviour:
   rightBound: 10
   player1: {fileID: 1224113928}
   player2: {fileID: 1637648355}
-  RandoRot: 0
+  RandoRot: 1
   NudgeForce: 100
   zTestObject: {fileID: 1224113923}
   sc: {fileID: 1159284154}
@@ -16493,21 +16493,21 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647112191}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 44035568ed68eb04ca601bfea6714944, type: 3}
 --- !u!4 &1647112198
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1647112191}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.66744274, z: 0, w: 0.74466115}
   m_LocalPosition: {x: 0, y: 0, z: 41.58}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 974765866}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 83.74, z: 0}
 --- !u!108 &1647112199
 Light:
   m_ObjectHideFlags: 0
